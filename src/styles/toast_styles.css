@@ -1,0 +1,102 @@
+/* Container styles */
+.Toastify__toast-container {
+  width: 320px;
+}
+
+/* Base toast styles */
+.Toastify__toast {
+  border-radius: 8px;
+  padding: 16px;
+  color: #ffffff;
+  font-family: "Arial", sans-serif;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Specific toast type styles */
+.Toastify__toast--error {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  box-shadow: 0 3px 10px rgba(255, 75, 43, 0.5);
+}
+
+.Toastify__toast--success {
+  background: linear-gradient(to right, #00b09b, #96c93d);
+  box-shadow: 0 3px 10px rgba(0, 176, 155, 0.5);
+}
+
+.Toastify__toast--warning {
+  background: linear-gradient(to right, #f7b733, #fc4a1a);
+  box-shadow: 0 3px 10px rgba(252, 74, 26, 0.5);
+}
+
+.Toastify__toast--info {
+  background: linear-gradient(to right, #2196f3, #4fc3f7);
+  box-shadow: 0 3px 10px rgba(33, 150, 243, 0.5);
+}
+
+/* Toast body styles */
+.Toastify__toast-body {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Progress bar styles */
+.Toastify__progress-bar {
+  height: 4px;
+  opacity: 0.7;
+}
+
+/* Close button styles */
+.Toastify__close-button,
+.Toastify__close-button--light {
+  color: #ffffff !important;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  align-self: center;
+  margin-left: 12px;
+}
+
+.Toastify__close-button:hover,
+.Toastify__close-button--light:hover {
+  opacity: 1;
+}
+
+.Toastify__close-button > svg,
+.Toastify__close-button--light > svg {
+  fill: #ffffff !important;
+}
+
+/* Toast icon styles */
+.Toastify__toast-icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+}
+
+.Toastify__toast-icon > svg {
+  fill: #ffffff !important;
+}
+
+/* Ensure all text and icons are white */
+.Toastify__toast-body,
+.Toastify__toast-icon,
+.Toastify__toast-icon > svg *,
+.Toastify__close-button > svg,
+.Toastify__close-button--light > svg,
+.Toastify__close-button > svg > path,
+.Toastify__close-button--light > svg > path {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Additional rule for error toast icons */
+.Toastify__toast--error .Toastify__toast-icon > svg * {
+  fill: #ffffff !important;
+  color: #ffffff !important;
+}
