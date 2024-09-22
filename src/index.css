@@ -4,11 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: black;
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    @apply font-sans text-black;
+  }
 }
 
-input {
-  @apply rounded-md border-2 border-gray-200 px-2 py-1 focus:border-transparent focus:outline-black;
+@layer components {
+  .headers-padding {
+    @apply px-3 py-2;
+  }
 }

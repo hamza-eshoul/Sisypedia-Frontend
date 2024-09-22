@@ -1,60 +1,30 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import { useState } from "react";
 
-// components
-import Button from "@/components/Button";
 import Image from "@/components/Image";
+import SecretKeyUI from "./components/SecretKeyUI";
+import AuthenticationUI from "./components/AuthenticationUI";
+import { AnimatePresence } from "framer-motion";
+
+type activeAuthUIType = "secretKey" | "authentication";
 
 const AuthPage = () => {
-  // local state
-  const [secretKey, setSecretKey] = useState("");
-
-  // library hooks
-  const navigate = useNavigate();
-
-  // event handlers
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSecretKey(e.target.value);
-  };
-
-  // functions
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const authSecretKey = import.meta.env.VITE_AUTH_SECRET_KEY;
-
-    const trimmedSecretKey = secretKey.trim();
-
-    if (trimmedSecretKey === authSecretKey) {
-      navigate("/home");
-    } else {
-      toast.error("Invalid secret key");
-    }
-  };
+  const [activeAuthUI, setActiveAuthUI] =
+    useState<activeAuthUIType>("secretKey");
 
   return (
     <main className="flex h-screen">
       <section className="flex w-2/5 flex-col items-center justify-center">
-        <div className="mx-auto max-w-xl">
-          <h1 className="pb-6 text-center text-3xl font-medium">Sisypedia</h1>
-          <form
-            className="flex flex-col items-center gap-5"
-            onSubmit={handleSubmit}
-          >
-            <label className="flex flex-col items-center gap-3">
-              Secret Key
-              <input
-                type="password"
-                placeholder="Enter the secret key here ..."
-                value={secretKey}
-                onChange={handleChange}
-              />
-            </label>
-            <Button>Submit Key</Button>
-          </form>
-        </div>
+        <AnimatePresence mode="wait">
+          {activeAuthUI === "secretKey" && (
+            <SecretKeyUI key="secretKeyUI" setActiveAuthUI={setActiveAuthUI} />
+          )}
+
+          {activeAuthUI === "authentication" && (
+            <AuthenticationUI key="authenticationUI" />
+          )}
+        </AnimatePresence>
       </section>
+
       <section className="w-3/5">
         <Image
           alt="auth image"

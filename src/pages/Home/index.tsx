@@ -1,7 +1,7 @@
 // partials
 import HomepageLayout from "./components/HomepageLayout";
+import InsightsBody from "./components/InsightBody";
 import InsightCategories from "./components/InsightCategories";
-import InsightsBody from "./components/InsightsBody";
 import InsightsList from "./components/InsightsList";
 
 const Homepage = () => {
